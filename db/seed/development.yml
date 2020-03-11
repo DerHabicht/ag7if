@@ -1,0 +1,1177 @@
+users:
+  - username: 'weblair'
+    auth0_id: ''
+  - username: 'user1'
+    auth0_id: ''
+
+services:
+  - name: 'Family Radio Service'
+    cfr_part: '95B'
+    license: false
+  - name: 'CB Radio Service'
+    cfr_part: '95D'
+    license: false
+  - name: 'General Mobile Radio Service'
+    cfr_part: '95E'
+    license: true
+  - name: 'Multi-Use Radio Service'
+    cfr_part: '95J'
+    license: false
+  - name: 'Amateur Radio Service'
+    cfr_part: '97'
+    license: true
+  - name: 'NOAA Weather Radio'
+    cfr_part: '300'
+    license: true
+  - name: 'Standard Time and Frequency Service'
+    cfr_part: '300'
+    license: true
+
+bands:
+  - name: 'FRS'
+    lower_frequency: 462.5625
+    upper_frequency: 467.7125
+    service_id: 1
+  - name: 'CB'
+    lower_frequency: 27.965
+    upper_frequency: 27.405
+    service_id: 2
+  - name: 'GMRS'
+    lower_frequency: 462.55
+    upper_frequency: 467.7125
+    service_id: 3
+  - name: 'MURS'
+    lower_frequency: 462.55
+    upper_frequency: 467.7125
+    service_id: 4
+  - name: 'NWR'
+    lower_frequency: 161.650
+    upper_frequency: 162.525
+    service_id: 6
+  - name: 'WWV'
+    lower_frequency: 2.5
+    upper_frequency: 25.0
+    service_id: 7
+  - name: '2200m'
+    lower_frequency: 0.1357
+    upper_frequency: 0.1378
+    service_id: 5
+  - name: '630m'
+    lower_frequency: 0.472
+    upper_frequency: 0.479
+    service_id: 5
+  - name: '160m'
+    lower_frequency: 1.8
+    upper_frequency: 2.0
+    service_id: 5
+  - name: '80m'
+    lower_frequency: 3.5
+    upper_frequency: 5.0
+    service_id: 5
+  - name: '60m'
+    lower_frequency: 5.332
+    upper_frequency: 5.405
+    service_id: 5
+  - name: '40m'
+    lower_frequency: 7.0
+    upper_frequency: 7.3
+    service_id: 5
+  - name: '30m'
+    lower_frequency: 10.1
+    upper_frequency: 10.15
+    service_id: 5
+  - name: '20m'
+    lower_frequency: 14.0
+    upper_frequency: 14.35
+    service_id: 5
+  - name: '17m'
+    lower_frequency: 18.068
+    upper_frequency: 18.168
+    service_id: 5
+  - name: '15m'
+    lower_frequency: 21.0
+    upper_frequency: 21.45
+    service_id: 5
+  - name: '12m'
+    lower_frequency: 24.89
+    upper_frequency: 24.99
+    service_id: 5
+  - name: '10m'
+    lower_frequency: 28.0
+    upper_frequency: 29.7
+    service_id: 5
+  - name: '6m'
+    lower_frequency: 50.0
+    upper_frequency: 54.0
+    service_id: 5
+  - name: '2m'
+    lower_frequency: 144.0
+    upper_frequency: 148.0
+    service_id: 5
+  - name: '1.25m'
+    lower_frequency: 219.0
+    upper_frequency: 225.0
+    service_id: 5
+  - name: '70cm'
+    lower_frequency: 420.0
+    upper_frequency: 450.0
+    service_id: 5
+  - name: '33cm'
+    lower_frequency: 902.0
+    upper_frequency: 928.0
+    service_id: 5
+  - name: '23cm'
+    lower_frequency: 1240.0
+    upper_frequency: 1300.0
+    service_id: 5
+
+channels:
+  - name: 'GMRS Channel 01'
+    rx_frequency: 462.5625
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.5625
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 1
+  - name: 'GMRS Channel 02'
+    rx_frequency: 462.5875
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.5875
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 1
+  - name: 'GMRS Channel 03'
+    rx_frequency: 462.6125
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.6125
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 1
+  - name: 'GMRS Channel 04'
+    rx_frequency: 462.6375
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.6375
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 1
+  - name: 'GMRS Channel 05'
+    rx_frequency: 462.6625
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.6625
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 1
+  - name: 'GMRS Channel 06'
+    rx_frequency: 462.6875
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.6875
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 1
+  - name: 'GMRS Channel 07'
+    rx_frequency: 462.7125
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.7125
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 1
+  - name: 'GMRS Channel 08'
+    rx_frequency: 467.5625
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 467.5625
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 1
+  - name: 'GMRS Channel 09'
+    rx_frequency: 467.5875
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 467.5875
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 1
+  - name: 'GMRS Channel 10'
+    rx_frequency: 467.6125
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 467.6125
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 1
+  - name: 'GMRS Channel 11'
+    rx_frequency: 467.6375
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 467.6375
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 1
+  - name: 'GMRS Channel 12'
+    rx_frequency: 467.6625
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 467.6625
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 1
+  - name: 'GMRS Channel 13'
+    rx_frequency: 467.6875
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 467.6875
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 1
+  - name: 'GMRS Channel 14'
+    rx_frequency: 467.7125
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 467.7125
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 1
+  - name: 'CB Channel 01'
+    rx_frequency: 27.965
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.965
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 02'
+    rx_frequency: 27.975
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.975
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 03'
+    rx_frequency: 27.985
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.985
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 04'
+    rx_frequency: 27.005
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.005
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 05'
+    rx_frequency: 27.015
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.015
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 06'
+    rx_frequency: 27.025
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.025
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 07'
+    rx_frequency: 27.035
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.035
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 08'
+    rx_frequency: 27.055
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.055
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 09'
+    rx_frequency: 27.065
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.065
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    remarks: 'For emergency/motorist assist use only'
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 10'
+    rx_frequency: 27.075
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.075
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 11'
+    rx_frequency: 27.085
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.085
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 12'
+    rx_frequency: 27.105
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.105
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 13'
+    rx_frequency: 27.115
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.115
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 14'
+    rx_frequency: 27.125
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.125
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 15'
+    rx_frequency: 27.135
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.135
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 16'
+    rx_frequency: 27.155
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.155
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 17'
+    rx_frequency: 27.165
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.165
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 18'
+    rx_frequency: 27.175
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.175
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 19'
+    rx_frequency: 27.185
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.185
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    remarks: 'Commonly used by trucks on highways'
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 20'
+    rx_frequency: 27.205
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.205
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 21'
+    rx_frequency: 27.215
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.215
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 22'
+    rx_frequency: 27.225
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.225
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 23'
+    rx_frequency: 27.255
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.255
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    remarks: 'Also used for remote control'
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 24'
+    rx_frequency: 27.235
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.235
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 25'
+    rx_frequency: 27.245
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.245
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 26'
+    rx_frequency: 27.265
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.265
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 27'
+    rx_frequency: 27.275
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.275
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 28'
+    rx_frequency: 27.285
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.285
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 29'
+    rx_frequency: 27.295
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.295
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 30'
+    rx_frequency: 27.305
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.305
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 31'
+    rx_frequency: 27.315
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.315
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 32'
+    rx_frequency: 27.325
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.325
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 33'
+    rx_frequency: 27.335
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.335
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 34'
+    rx_frequency: 27.345
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.345
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 35'
+    rx_frequency: 27.355
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.355
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 36'
+    rx_frequency: 27.365
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.365
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 37'
+    rx_frequency: 27.375
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.375
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 38'
+    rx_frequency: 27.385
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.385
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 39'
+    rx_frequency: 27.395
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.395
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'CB Channel 40'
+    rx_frequency: 27.405
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 27.405
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 2
+  - name: 'GMRS Channel 01'
+    rx_frequency: 462.5625
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.5625
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 02'
+    rx_frequency: 462.5875
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.5875
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 03'
+    rx_frequency: 462.6125
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.6125
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 04'
+    rx_frequency: 462.6375
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.6375
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 05'
+    rx_frequency: 462.6625
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.6625
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 06'
+    rx_frequency: 462.6875
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.6875
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 07'
+    rx_frequency: 462.7125
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.7125
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 15'
+    rx_frequency: 462.550
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.550
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 15R'
+    rx_frequency: 462.550
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 467.550
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 16'
+    rx_frequency: 462.575
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.575
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 16R'
+    rx_frequency: 462.575
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 467.575
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 17'
+    rx_frequency: 462.6
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.6
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 17R'
+    rx_frequency: 462.6
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 467.6
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 18'
+    rx_frequency: 462.625
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.625
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 18R'
+    rx_frequency: 462.625
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 467.625
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 19'
+    rx_frequency: 462.65
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.65
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 19R'
+    rx_frequency: 462.65
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 467.65
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 20'
+    rx_frequency: 462.675
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.675
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 20R'
+    rx_frequency: 462.675
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 467.675
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 21'
+    rx_frequency: 462.7
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.7
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 21R'
+    rx_frequency: 462.7
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 467.7
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 22'
+    rx_frequency: 462.725
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 462.725
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'GMRS Channel 22R'
+    rx_frequency: 462.725
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 467.725
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 3
+  - name: 'WX1'
+    rx_frequency: 162.550
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 5
+  - name: 'WX2'
+    rx_frequency: 162.400
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 5
+  - name: 'WX3'
+    rx_frequency: 162.475
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 5
+  - name: 'WX4'
+    rx_frequency: 162.425
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 5
+  - name: 'WX5'
+    rx_frequency: 162.450
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 5
+  - name: 'WX6'
+    rx_frequency: 162.500
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 5
+  - name: 'WX7'
+    rx_frequency: 162.525
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 5
+  - name: 'WX8'
+    rx_frequency: 161.650
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 5
+  - name: 'WX9'
+    rx_frequency: 161.775
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 5
+  - name: 'WWV(H) 2.5MHz'
+    rx_frequency: 2.5
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 6
+  - name: 'WWV(H) 5MHz'
+    rx_frequency: 5.0
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 6
+  - name: 'WWV(H) 10MHz'
+    rx_frequency: 10.0
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 6
+  - name: 'WWV(H) 15MHz'
+    rx_frequency: 15.0
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 6
+  - name: 'WWV(H) 20MHz'
+    rx_frequency: 20.0
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 6
+  - name: 'WWV(H) 25MHz'
+    rx_frequency: 25.0
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 6
+  - name: 'CHU 3MHz'
+    rx_frequency: 3.330
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 6
+  - name: 'CHU 7MHz'
+    rx_frequency: 7.850
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 6
+  - name: 'CHU 14MHz'
+    rx_frequency: 14.670
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 6
+  - name: 'MURS Channel 1'
+    rx_frequency: 151.82
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 151.82
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 4
+  - name: 'MURS Channel 2'
+    rx_frequency: 151.88
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 151.88
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 4
+  - name: 'MURS Channel 3'
+    rx_frequency: 151.94
+    rx_width: 'N'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 151.94
+    tx_width: 'N'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 4
+  - name: 'MURS Channel 4'
+    rx_frequency: 154.570
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 154.570
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 4
+  - name: 'MURS Channel 5'
+    rx_frequency: 154.6
+    rx_width: 'W'
+    rx_tone_type: 'CSQ'
+    tx_frequency: 154.6
+    tx_width: 'W'
+    tx_tone_type: 'CSQ'
+    mode: 'A'
+    is_public: true
+    user_id: 1
+    band_id: 4

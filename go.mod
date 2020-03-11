@@ -4,8 +4,11 @@ go 1.12
 
 require (
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
+	github.com/fzipp/gocyclo v0.0.0-20150627053110-6acd4345c835 // indirect
 	github.com/gin-gonic/gin v1.5.0
 	github.com/jinzhu/gorm v1.9.12
+	github.com/pkg/errors v0.8.1
+	github.com/satori/go.uuid v1.2.0
 	github.com/sirupsen/logrus v1.4.2
 	github.com/spf13/viper v1.6.2
 	github.com/subosito/gotenv v1.2.0

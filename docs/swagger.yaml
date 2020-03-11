@@ -1,0 +1,43 @@
+basePath: /api/v1
+definitions:
+  controllers.ServiceStatus:
+    properties:
+      errors:
+        items:
+          type: string
+        type: array
+      status:
+        type: object
+      version:
+        type: string
+    type: object
+host: UPDATE HOST
+info:
+  contact:
+    email: UPDATE CONTACT EMAIL
+    name: UPDATE CONTACT NAME
+  description: UPDATE DESCRIPTION FIELD
+  license:
+    name: MIT License
+    url: https://opensource.org/licenses/MIT
+  title: weblair ag7if
+  version: 0.1.0+0
+paths:
+  /health:
+    get:
+      description: |-
+        Healthcheck endpoint. Reports which statuses are currently
+        running and the current API\'s version number. If critical
+        services are running, it will return 200. If any of the
+        critical services are down, then the endpoint will return 503.
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.ServiceStatus'
+        "503":
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/controllers.ServiceStatus'
+      summary: Check to assure that the service is running.
+swagger: "2.0"

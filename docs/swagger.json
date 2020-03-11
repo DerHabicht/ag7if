@@ -1,0 +1,59 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "UPDATE DESCRIPTION FIELD",
+        "title": "weblair ag7if",
+        "contact": {
+            "name": "UPDATE CONTACT NAME",
+            "email": "UPDATE CONTACT EMAIL"
+        },
+        "license": {
+            "name": "MIT License",
+            "url": "https://opensource.org/licenses/MIT"
+        },
+        "version": "0.1.0+0"
+    },
+    "host": "UPDATE HOST",
+    "basePath": "/api/v1",
+    "paths": {
+        "/health": {
+            "get": {
+                "description": "Healthcheck endpoint. Reports which statuses are currently\nrunning and the current API\\'s version number. If critical\nservices are running, it will return 200. If any of the\ncritical services are down, then the endpoint will return 503.",
+                "summary": "Check to assure that the service is running.",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ServiceStatus"
+                        }
+                    },
+                    "503": {
+                        "description": "Service Unavailable",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ServiceStatus"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "controllers.ServiceStatus": {
+            "type": "object",
+            "properties": {
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "status": {
+                    "type": "object"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -9,7 +9,7 @@ import (
 	_ "github.com/weblair/ag7if/config"
 )
 
-var DB *gorm.DB = nil
+var Tx *gorm.DB = nil
 
 func init() {
 	var err error = nil
@@ -22,8 +22,8 @@ func init() {
 		viper.GetString("DB_PASSWORD"),
 	)
 
-	// TODO: Figure out how to add defer DB.Close()
-	DB, err = gorm.Open("postgres", connectionStr)
+	// TODO: Figure out how to add defer Tx.Close()
+	Tx, err = gorm.Open("postgres", connectionStr)
 	if err != nil {
 		panic(fmt.Sprintf("Unable to establish database connection: %v", err))
 	}

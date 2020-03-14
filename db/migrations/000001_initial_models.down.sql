@@ -1,0 +1,18 @@
+ALTER TABLE zone_channels DROP CONSTRAINT FKzone_chann334398;
+ALTER TABLE zone_channels DROP CONSTRAINT FKzone_chann239833;
+ALTER TABLE channels DROP CONSTRAINT FKchannels870610;
+ALTER TABLE channels DROP CONSTRAINT FKchannels76599;
+ALTER TABLE zones DROP CONSTRAINT FKzones534473;
+ALTER TABLE bands DROP CONSTRAINT FKbands47296;
+
+DROP TABLE zone_channels;
+DROP TABLE zones;
+DROP TABLE services;
+DROP TABLE bands;
+DROP TABLE channels;
+DROP TABLE users;
+
+DROP TYPE chan_mode;
+DROP TYPE tone_type;
+DROP TYPE chan_width;
+

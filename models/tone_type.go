@@ -11,6 +11,7 @@ import (
 // no tone is needed), CTCSS represents an analog tone at a given frequency, and DCS represents a 9-bit digital sequence
 // to be sent at the beginning of each transmission (represented as an octal number).
 type ToneType int
+
 const (
 	CSQ ToneType = iota + 1
 	CTCSS
@@ -19,9 +20,9 @@ const (
 
 func (t ToneType) String() string {
 	m := map[ToneType]string{
-		CSQ: "CSQ",
+		CSQ:   "CSQ",
 		CTCSS: "CTCSS",
-		DCS: "DCS",
+		DCS:   "DCS",
 	}
 
 	s, ok := m[t]
@@ -34,9 +35,9 @@ func (t ToneType) String() string {
 
 func ParseToneType(s string) (ToneType, error) {
 	m := map[string]ToneType{
-		"CSQ": CSQ,
+		"CSQ":   CSQ,
 		"CTCSS": CTCSS,
-		"DCS": DCS,
+		"DCS":   DCS,
 	}
 
 	t, ok := m[s]
@@ -97,7 +98,7 @@ func (t *ToneType) UnmarshalJSON(value []byte) error {
 func ValidateToneType(t *ToneType, v *float32) error {
 	if t == nil {
 		if v != nil {
-			 return fmt.Errorf("ToneType is nil thus a nil tone was expected, tone was %v instead", *v)
+			return fmt.Errorf("ToneType is nil thus a nil tone was expected, tone was %v instead", *v)
 		}
 	} else {
 		if v == nil {

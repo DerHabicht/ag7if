@@ -1,0 +1,90 @@
+defaults: &defaults
+  working_directory: /root/ag7if
+jobs:
+  build:
+    <<: *defaults
+    docker:
+      - image: weblair/lair:latest
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-gomod-{{ checksum "go.mod" }}
+      - run:
+          name: Tidy Go modules
+          command: go mod tidy
+      - save_cache:
+          key: v1-gomod-{{ checksum "go.mod" }}
+          paths:
+            - /go/pkg
+            - /go/src
+      - run:
+          name: Build project
+          command: make
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - bin
+            - config
+            - db/migrations
+  deploy:
+    <<: *defaults
+    docker:
+      - image: weblair/lair:latest
+    steps:
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Install Docker CLI
+          command: apk add docker-cli
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Build Docker image
+          command: docker build -t weblair/ag7if:latest .
+      - run:
+          name: Push Docker image
+          command: |
+            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
+            docker push weblair/ag7if:latest
+      - run:
+          name: Pull Docker image
+          command: |
+            ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST -C \
+            "docker stop ag7if; docker rm ag7if; docker pull weblair/ag7if"
+      - run:
+          name: Migrate database
+          command: lair db migrate
+      - run:
+          name: Restart the Docker image
+          command: |
+            ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST -C \
+            "docker run --name ag7if \
+              -e GIN_MODE=release \
+              -e URL=localhost:8080 \
+              -e DB_HOST=$DB_HOST \
+              -e DB_NAME=$DB_NAME \
+              -e DB_USER=$DB_USER \
+              -e DB_PASSWORD=$DB_PASSWORD \
+              -e AUTH0_API_AUDIENCE=$AUTH0_API_AUDIENCE \
+              -e AUTH0_JWK=$AUTH0_JWK -d" \
+              --network $DB_NETWORK \
+              -p 9000:8080 \
+              weblair/ag7if
+workflows:
+  version: 2
+  build-test-migrate-deploy:
+    jobs:
+      - build
+      - migrate:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+      - deploy:
+          requires:
+            - build
+            - migrate
+          filters:
+            branches:
+              only: master

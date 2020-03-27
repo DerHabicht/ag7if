@@ -8,6 +8,7 @@ import (
 // ChanWidth is the channel width of a given frequency. W corresponds to wideband (20kHz) and N
 // corresponds to narrowband (12.5kHz).
 type ChanWidth int
+
 const (
 	W = iota + 1
 	N
@@ -87,4 +88,3 @@ func (c *ChanWidth) UnmarshalJSON(value []byte) error {
 
 	return nil
 }
-

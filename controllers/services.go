@@ -9,7 +9,7 @@ import (
 	"strconv"
 )
 
-type ServicesController struct {}
+type ServicesController struct{}
 
 func NewServicesController() ServicesController {
 	return ServicesController{}
@@ -24,7 +24,6 @@ func (s ServicesController) List(c *gin.Context) {
 
 	db.Tx.Find(&svcs)
 
-
 	c.JSON(http.StatusOK, svcs)
 }
 
@@ -33,7 +32,7 @@ func (s ServicesController) Fetch(c *gin.Context) {
 	if err != nil {
 		logrus.WithFields(logrus.Fields{
 			"error": err,
-			"id": c.Param("id"),
+			"id":    c.Param("id"),
 		}).Fatal("Invalid ID passed for lookup.")
 	}
 

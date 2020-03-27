@@ -8,6 +8,7 @@ import (
 // ChanMode refers to the operating mode on this channel. A represents analog modes, D represents digital modes, and M
 // represents mixed-modes (when analog and digital modes are both present in a duplex or trunked configuration).
 type ChanMode int
+
 const (
 	A ChanMode = iota + 1
 	D

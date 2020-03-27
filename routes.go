@@ -7,9 +7,10 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 	ginlogrus "github.com/toorop/gin-logrus"
 	"github.com/weblair/ag7if/controllers"
+	"github.com/weblair/ag7if/middleware"
 )
 
-func configureRoutingGroup(g *gin.RouterGroup)  {
+func configureRoutingGroup(g *gin.RouterGroup) {
 	// Visit {host}/api/v1/swagger/index.html to see the API documentation.
 	g.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
@@ -26,6 +27,9 @@ func configureRoutingGroup(g *gin.RouterGroup)  {
 func newRouter(version string, logger *logrus.Logger) *gin.Engine {
 	router := gin.New()
 	router.Use(ginlogrus.Logger(logger), gin.Recovery())
+
+	validator := middleware.GetValidator()
+	router.Use(middleware.Authorize(validator))
 
 	v1 := router.Group("/api/v1")
 	health := controllers.NewHealthController(version)

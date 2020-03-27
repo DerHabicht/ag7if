@@ -1,9 +1,13 @@
-ALTER TABLE zone_channels DROP CONSTRAINT FKzone_chann334398;
-ALTER TABLE zone_channels DROP CONSTRAINT FKzone_chann239833;
-ALTER TABLE channels DROP CONSTRAINT FKchannels870610;
-ALTER TABLE channels DROP CONSTRAINT FKchannels76599;
-ALTER TABLE zones DROP CONSTRAINT FKzones534473;
-ALTER TABLE bands DROP CONSTRAINT FKbands47296;
+ALTER TABLE zone_channels
+    DROP CONSTRAINT fk_zone_channels_channels;
+ALTER TABLE channels
+    DROP CONSTRAINT fk_channels_bands;
+ALTER TABLE channels
+    DROP CONSTRAINT fk_channels_users;
+ALTER TABLE zones
+    DROP CONSTRAINT fk_zones_users;
+ALTER TABLE bands
+    DROP CONSTRAINT fk_bands_services;
 
 DROP TABLE zone_channels;
 DROP TABLE zones;

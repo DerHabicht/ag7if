@@ -1,7 +1,7 @@
 package models
 
 type Service struct {
-	BaseModel
+	BaseModelWithUUID
 	Name    string `json:"name"`
 	CFRPart string `json:"cfr_part"`
 	License bool   `json:"license"`

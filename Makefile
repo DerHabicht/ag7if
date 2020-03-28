@@ -12,10 +12,15 @@ LDFLAGS = -ldflags "-s -X main.BuildTime=${BUILD_TIME} -X main.GitRevision=${GIT
 bin/ag7if: main.go $(foreach f, $(SRC), $(f).go)
 	go build ${LDFLAGS} -o bin/ag7if
 
+.PHONY: install
+install: bin/ag7if
+	-@rm ${GOPATH}/bin/ag7if
+	cp bin/ag7if ${GOPATH}/bin/
+
 .PHONY: run
 run: bin/ag7if
 	air -d -c .air.conf
 
 .PHONY: clean
 clean:
-	rm ag7if
+	-@rm ag7if

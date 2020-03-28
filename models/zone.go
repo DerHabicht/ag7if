@@ -2,7 +2,7 @@ package models
 
 type Zone struct {
 	// Database fields
-	BaseModel
+	BaseModelWithUUID
 	Name        string `json:"name"`
 	Description string `json:"description"`
 	IsPublic    bool   `json:"is_public"`

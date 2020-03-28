@@ -1,4 +1,4 @@
-URL: 'localhost:3001'
+URL: 'localhost:3000'
 DB_HOST: 'localhost'
 DB_NAME: 'ag7if_development'
 DB_USER: 'postgres'

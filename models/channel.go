@@ -2,7 +2,7 @@ package models
 
 type Channel struct {
 	// Database fields
-	BaseModel
+	BaseModelWithUUID
 	Name        string     `json:"name"`
 	RxFrequency float32    `json:"rx_frequency"`
 	RxWidth     ChanWidth  `json:"rx_width"`
@@ -15,8 +15,8 @@ type Channel struct {
 	Mode        ChanMode   `json:"chan_mode"`
 	Remarks     string     `json:"remarks"`
 	IsPublic    bool       `json:"is_public"`
-	UserID      uint       `json:"owner_id"`
-	BandID      uint       `json:"band_id"`
+	UserID      uint       `json:"-"`
+	BandID      uint       `json:"-"`
 }
 
 // BeforeSave validates tone and Tx channel parameters.

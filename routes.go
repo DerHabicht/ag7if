@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	swaggerFiles "github.com/swaggo/files"
@@ -10,18 +11,12 @@ import (
 	"github.com/weblair/ag7if/middleware"
 )
 
-func configureRoutingGroup(g *gin.RouterGroup) {
-	// Visit {host}/api/v1/swagger/index.html to see the API documentation.
-	g.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-
-	services := controllers.NewServicesController()
-	{
-		g.POST("/services", services.Create)
-		g.GET("/services", services.List)
-		g.GET("/services/:id", services.Fetch)
-		g.PUT("/services/:id", services.Update)
-		g.DELETE("/services/:id", services.Delete)
-	}
+func configureResource(g *gin.RouterGroup, c controllers.Controller, r string) {
+	g.POST(fmt.Sprintf("/%s", r), c.Create)
+	g.GET(fmt.Sprintf("/%s", r), c.List)
+	g.GET(fmt.Sprintf("/%s/:id", r), c.Fetch)
+	g.PUT(fmt.Sprintf("/%s/:id", r), c.Update)
+	g.DELETE(fmt.Sprintf("/%s/:id",r), c.Delete)
 }
 
 func newRouter(version string, logger *logrus.Logger) *gin.Engine {
@@ -31,12 +26,19 @@ func newRouter(version string, logger *logrus.Logger) *gin.Engine {
 	validator := middleware.GetValidator()
 	router.Use(middleware.Authorize(validator))
 
+	// Visit {host}/api/v1/swagger/index.html to see the API documentation.
 	v1 := router.Group("/api/v1")
+	v1.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
+	// {host}/api/v1/health resource
 	health := controllers.NewHealthController(version)
 	{
 		v1.GET("/health", health.Check)
 	}
-	configureRoutingGroup(v1)
+
+	// {host}/api/v1/services resource
+	services := controllers.NewServicesController()
+	configureResource(v1, services, "services")
 
 	return router
 }

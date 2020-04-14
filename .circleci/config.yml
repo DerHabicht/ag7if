@@ -1,5 +1,5 @@
 defaults: &defaults
-  working_directory: /root
+  working_directory: /root/ag7if
 jobs:
   build:
     <<: *defaults

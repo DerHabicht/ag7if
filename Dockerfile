@@ -10,4 +10,7 @@ RUN cd ./temp/ag7if/ && make
 RUN cd ./temp/ag7if/ && make install
 RUN rm -rf ./temp/
 
-CMD ["ag7if"]
+EXPOSE 8080
+ENV URL localhost:8080
+
+CMD ["$GOPATH/bin/ag7if"]

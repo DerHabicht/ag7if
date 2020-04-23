@@ -13,4 +13,4 @@ RUN rm -rf ./temp/
 EXPOSE 8080
 ENV URL localhost:8080
 
-CMD ["$GOPATH/bin/ag7if"]
+CMD ["/go/bin/ag7if"]

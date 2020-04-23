@@ -17,19 +17,10 @@ install: bin/ag7if
 	-@rm ${GOPATH}/bin/ag7if
 	cp bin/ag7if ${GOPATH}/bin/
 
-.PHONY: debug
-debug: bin/ag7if
-	go get github.com/cosmtrek/air
-	air -d -c .air.conf
-
-.image: bin/ag7if Dockerfile
-	docker build .
-
 .PHONY: run
-run: .image
-	go get github.com/mikefarah/yq
-
+debug: bin/ag7if
+	air -d -c .air.conf
 
 .PHONY: clean
 clean:
-	-@rm ag7if
+	-@rm bin/ag7if

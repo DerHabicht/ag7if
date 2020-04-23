@@ -59,14 +59,16 @@ jobs:
           command: |
             ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST -C \
             "docker run --name ag7if \
-              -p 9000:8080 \
               -e GIN_MODE=release \
+              -e URL=localhost:8080 \
               -e DB_HOST=$DB_HOST \
               -e DB_NAME=$DB_NAME \
               -e DB_USER=$DB_USER \
               -e DB_PASSWORD=$DB_PASSWORD \
               -e AUTH0_API_AUDIENCE=$AUTH0_API_AUDIENCE \
               -e AUTH0_JWK=$AUTH0_JWK -d" \
+              --network $DB_NETWORK \
+              -p 9000:8080 \
               weblair/ag7if
 workflows:
   version: 2

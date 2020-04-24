@@ -26,7 +26,7 @@ jobs:
             - bin
             - config
             - db/migrations
-  deploy:
+  stage:
     <<: *defaults
     docker:
       - image: weblair/lair:latest
@@ -50,41 +50,76 @@ jobs:
           name: Pull Docker image
           command: |
             ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST -C \
-            "docker stop ag7if; docker rm ag7if; docker pull weblair/ag7if"
-      - run:
-          name: Migrate database
-          command: lair db migrate
+            "docker stop ag7if-stage; docker rm ag7if-stage; docker pull weblair/ag7if:latest"
       - run:
           name: Restart the Docker image
           command: |
             ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST -C \
-            "docker run --name ag7if \
+            "docker run -dit --name ag7if-stage \
               -e GIN_MODE=release \
-              -e URL=localhost:8080 \
               -e DB_HOST=$DB_HOST \
-              -e DB_NAME=$DB_NAME \
+              -e DB_NAME=$DB_STAGE_NAME \
               -e DB_USER=$DB_USER \
               -e DB_PASSWORD=$DB_PASSWORD \
               -e AUTH0_API_AUDIENCE=$AUTH0_API_AUDIENCE \
-              -e AUTH0_JWK=$AUTH0_JWK -d" \
+              -e AUTH0_JWK=$AUTH0_JWK \
+              --network $DB_NETWORK \
+              -p 9001:8080 \
+              weblair/ag7if:latest"
+  deploy:
+    <<: *defaults
+    docker:
+      - image: weblair/lair:latest
+    steps:
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Install Docker CLI
+          command: apk add docker-cli
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Build Docker image
+          command: docker build -t weblair/ag7if:production .
+      - run:
+          name: Push Docker image
+          command: |
+            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
+            docker push weblair/ag7if:production
+      - run:
+          name: Pull Docker image
+          command: |
+            ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST -C \
+            "docker stop ag7if-production; docker rm ag7if-production; docker pull weblair/ag7if:production"
+      - run:
+          name: Restart the Docker image
+          command: |
+            ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST -C \
+            "docker run -dit --name ag7if-production \
+              -e GIN_MODE=release \
+              -e DB_HOST=$DB_HOST \
+              -e DB_NAME=$DB_PRODUCTION_NAME \
+              -e DB_USER=$DB_USER \
+              -e DB_PASSWORD=$DB_PASSWORD \
+              -e AUTH0_API_AUDIENCE=$AUTH0_API_AUDIENCE \
+              -e AUTH0_JWK=$AUTH0_JWK \
               --network $DB_NETWORK \
               -p 9000:8080 \
-              weblair/ag7if
+              weblair/ag7if:production"
 workflows:
   version: 2
-  build-test-migrate-deploy:
+  build-deploy:
     jobs:
       - build
-      - migrate:
+      - stage:
           requires:
             - build
           filters:
             branches:
-              only: master
+              only: develop
       - deploy:
           requires:
             - build
-            - migrate
           filters:
             branches:
               only: master

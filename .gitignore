@@ -16,6 +16,7 @@ tmp/
 # Dependency directories (remove the comment below to include it)
 vendor/
 
-# DotEnv file and production config
+# DotEnv file, stage and production config
 .env
 config/production.yml
+config/stage.yml

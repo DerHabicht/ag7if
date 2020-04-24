@@ -11,6 +11,6 @@ RUN cd ./temp/ag7if/ && make install
 RUN rm -rf ./temp/
 
 EXPOSE 8080
-ENV URL localhost:8080
+ENV URL 0.0.0.0:8080
 
 CMD ["/go/bin/ag7if"]

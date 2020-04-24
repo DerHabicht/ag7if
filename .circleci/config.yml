@@ -36,8 +36,9 @@ jobs:
       - run:
           name: Install Docker CLI
           command: apk add docker-cli
-      - setup_remote_docker:
-          docker_layer_caching: true
+      - run:
+          name: DEBUG
+          command: ls -al
       - run:
           name: Build Docker image
           command: docker build -t weblair/ag7if:latest .
@@ -76,8 +77,6 @@ jobs:
       - run:
           name: Install Docker CLI
           command: apk add docker-cli
-      - setup_remote_docker:
-          docker_layer_caching: true
       - run:
           name: Build Docker image
           command: docker build -t weblair/ag7if:production .

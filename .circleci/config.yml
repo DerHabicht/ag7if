@@ -4,44 +4,41 @@ jobs:
   build:
     <<: *defaults
     docker:
-      - image: weblair/lair:latest
+      - image: docker
     steps:
       - checkout
-      - restore_cache:
-          key: v1-gomod-{{ checksum "go.mod" }}
-      - run:
-          name: Tidy Go modules
-          command: go mod tidy
-      - save_cache:
-          key: v1-gomod-{{ checksum "go.mod" }}
-          paths:
-            - /go/pkg
-            - /go/src
-      - run:
-          name: Build project
-          command: make
-      - persist_to_workspace:
-          root: /root
-          paths:
-            - ag7if
-  stage:
-    <<: *defaults
-    docker:
-      - image: weblair/lair:latest
-    steps:
-      - attach_workspace:
-          at: ./
-      - run:
-          name: Install Docker CLI
-          command: apk add docker-cli
       - run:
           name: Build Docker image
-          command: docker build -t weblair/ag7if:latest .
+          command: |
+            if [[ "$CIRCLE_BRANCH" == "master" ]]
+            then
+              docker build -t weblair/ag7if:production .
+            elif [[ "$CIRCLE_BRANCH" == "develop" ]]
+            then
+              docker build -t weblair/ag7if:latest .
+            else
+              docker build -t weblair/ag7if:$CIRCLE_BRANCH
+            fi
       - run:
           name: Push Docker image
           command: |
-            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
-            docker push weblair/ag7if:latest
+            if [[ "$CIRCLE_BRANCH" == "master" ]]
+            then
+              echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
+              docker push weblair/ag7if:production
+            elif [[ "$CIRCLE_BRANCH" == "develop" ]]
+            then
+              echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
+              docker push weblair/ag7if:latest
+            else
+              echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
+              docker push weblair/ag7if:$CIRCLE_BRANCH
+            fi
+  stage:
+    <<: *defaults
+    docker:
+      - image: docker
+    steps:
       - run:
           name: Pull Docker image
           command: |
@@ -65,13 +62,8 @@ jobs:
   deploy:
     <<: *defaults
     docker:
-      - image: weblair/lair:latest
+      - image: docker
     steps:
-      - attach_workspace:
-          at: ./
-      - run:
-          name: Install Docker CLI
-          command: apk add docker-cli
       - run:
           name: Build Docker image
           command: docker build -t weblair/ag7if:production .

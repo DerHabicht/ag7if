@@ -41,7 +41,7 @@ func (h HealthController) Check(c *gin.Context) {
 
 	h.Status.Services["endpoint"] = true
 
-	err := db.DB.DB().Ping()
+	err := db.Tx.DB().Ping()
 	if err == nil {
 		h.Status.Services["database"] = true
 	} else {

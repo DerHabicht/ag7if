@@ -11,12 +11,12 @@ jobs:
           command: |
             if [[ "$CIRCLE_BRANCH" == "master" ]]
             then
-              docker build -t weblair/ag7if:production -t "$BASE_VERSION+$CIRCLE_BUILD_NUM" .
+              docker build -t weblair/ag7if:production -t "weblair/ag7if:$BASE_VERSION+$CIRCLE_BUILD_NUM" .
             elif [[ "$CIRCLE_BRANCH" == "develop" ]]
             then
-              docker build -t weblair/ag7if:latest -t "$BASE_VERSION+$CIRCLE_BUILD_NUM" .
+              docker build -t weblair/ag7if:latest -t "weblair/ag7if:$BASE_VERSION+$CIRCLE_BUILD_NUM" .
             else
-              docker build -t weblair/ag7if:test -t "$BASE_VERSION+$CIRCLE_BUILD_NUM" .
+              docker build -t weblair/ag7if:test -t "weblair/ag7if:$BASE_VERSION+$CIRCLE_BUILD_NUM" .
             fi
       - run:
           name: Push Docker image

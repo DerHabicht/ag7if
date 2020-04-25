@@ -3,41 +3,32 @@ defaults: &defaults
 jobs:
   build:
     <<: *defaults
-    docker:
-      - image: docker
+    machine: true
     steps:
       - checkout
+      - setup_remote_docker:
+          docker_layer_caching: false
       - run:
           name: Build Docker image
           command: |
             if [[ "$CIRCLE_BRANCH" == "master" ]]
             then
-              docker build -t weblair/ag7if:production .
+              docker build -t weblair/ag7if:production -t "$BASE_VERSION+$CIRCLE_BUILD_NUM" .
             elif [[ "$CIRCLE_BRANCH" == "develop" ]]
             then
-              docker build -t weblair/ag7if:latest .
+              docker build -t weblair/ag7if:latest -t "$BASE_VERSION+$CIRCLE_BUILD_NUM" .
             else
-              docker build -t weblair/ag7if:$CIRCLE_BRANCH
+              docker build -t weblair/ag7if:test -t "$BASE_VERSION+$CIRCLE_BUILD_NUM" .
             fi
       - run:
           name: Push Docker image
           command: |
-            if [[ "$CIRCLE_BRANCH" == "master" ]]
-            then
               echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
-              docker push weblair/ag7if:production
-            elif [[ "$CIRCLE_BRANCH" == "develop" ]]
-            then
-              echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
-              docker push weblair/ag7if:latest
-            else
-              echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
-              docker push weblair/ag7if:$CIRCLE_BRANCH
-            fi
+              docker push weblair/ag7if
   stage:
     <<: *defaults
     docker:
-      - image: docker
+      - image: weblair/lair:latest
     steps:
       - run:
           name: Pull Docker image
@@ -62,7 +53,7 @@ jobs:
   deploy:
     <<: *defaults
     docker:
-      - image: docker
+      - image: weblair/lair:latest
     steps:
       - run:
           name: Build Docker image

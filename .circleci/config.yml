@@ -1,5 +1,5 @@
 defaults: &defaults
-  working_directory: /root/ag7if
+  working_directory: /home/circleci/ag7if
 jobs:
   build:
     <<: *defaults

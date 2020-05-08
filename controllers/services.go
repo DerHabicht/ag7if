@@ -9,10 +9,16 @@ import (
 	"strconv"
 )
 
-type ServicesController struct{}
+type ServicesController struct{
+	resourceModel models.Service
+}
 
 func NewServicesController() ServicesController {
 	return ServicesController{}
+}
+
+func (s ServicesController) ResourceModel() interface{} {
+	return s.resourceModel
 }
 
 func (s ServicesController) Create(c *gin.Context) {
@@ -20,11 +26,7 @@ func (s ServicesController) Create(c *gin.Context) {
 }
 
 func (s ServicesController) List(c *gin.Context) {
-	var svcs []models.Service
-
-	db.Tx.Find(&svcs)
-
-	c.JSON(http.StatusOK, svcs)
+	ListRecords(c, s)
 }
 
 func (s ServicesController) Fetch(c *gin.Context) {

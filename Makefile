@@ -18,7 +18,7 @@ install: bin/ag7if
 	cp bin/ag7if ${GOPATH}/bin/
 
 .PHONY: run
-debug: bin/ag7if
+run: bin/ag7if
 	air -d -c .air.conf
 
 .PHONY: clean

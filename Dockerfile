@@ -9,6 +9,7 @@ RUN cd ./temp/ag7if/ && make clean
 RUN cd ./temp/ag7if/ && make
 RUN cd ./temp/ag7if/ && make install
 RUN rm -rf ./temp/
+RUN rm -rf /go/src/
 
 EXPOSE 8080
 ENV URL 0.0.0.0:8080

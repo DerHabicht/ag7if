@@ -3,9 +3,25 @@ package models
 import (
 	"encoding/json"
 	"fmt"
-	uuid "github.com/satori/go.uuid"
 	"time"
+
+	"github.com/satori/go.uuid"
 )
+
+type Model interface {
+}
+
+type BaseModel struct {
+	ID        uint       `json:"-" gorm:"primary_key"`
+	CreatedAt time.Time  `json:"-"`
+	UpdatedAt time.Time  `json:"-"`
+	DeletedAt *time.Time `json:"-"`
+}
+
+type BaseModelWithUUID struct {
+	BaseModel
+	PublicID  uuid.UUID  `json:"id"`
+}
 
 type ValidationErrors []string
 
@@ -18,13 +34,3 @@ func (v ValidationErrors) Error() string {
 	return string(verrs)
 }
 
-type BaseModel struct {
-	ID        uint       `json:"-" gorm:"primary_key"`
-	CreatedAt time.Time  `json:"-"`
-	UpdatedAt time.Time  `json:"-"`
-	DeletedAt *time.Time `json:"-"`
-}
-
-type BaseModelWithUUID struct {
-	PublicID  uuid.UUID  `json:"id"`
-}

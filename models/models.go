@@ -8,8 +8,7 @@ import (
 	"github.com/satori/go.uuid"
 )
 
-type Model interface {
-}
+type Model interface {}
 
 type BaseModel struct {
 	ID        uint       `json:"-" gorm:"primary_key"`

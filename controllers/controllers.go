@@ -1,17 +1,18 @@
 package controllers
 
 import (
+	"fmt"
+	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"net/http"
 	"reflect"
 
-	"github.com/gin-gonic/gin"
-
-	"github.com/weblair/ag7if/db"
+	"github.com/weblair/ag7if/database"
+	"github.com/weblair/ag7if/models"
 )
 
 type Controller interface {
-	ResourceModel() interface{}
+	ResourceModel() models.Model
 	Create(c *gin.Context)
 	List(c *gin.Context)
 	Fetch(c *gin.Context)
@@ -39,17 +40,35 @@ func ListRecords(ctx *gin.Context, ctl Controller) {
 	logrus.WithFields(logrus.Fields{
 		"resource_method": "list",
 		"controller": reflect.TypeOf(ctl).String(),
-		"resource_type": reflect.TypeOf(ctl.Resource()).String(),
+		"resource_type": reflect.TypeOf(ctl.ResourceModel()).String(),
 		"resource_list_type": reflect.TypeOf(r).String(),
 	}).Debug("Fetching list of resources from database")
 
-	db.Tx.Find(r)
+	database.DB.Find(r)
 
 	ctx.JSON(http.StatusOK, r)
 }
 
-func FetchRecord(c *gin.Context) {
+func FetchRecord(c *gin.Context, ctl Controller, param string, preload []string) {
+	tx := database.DB.Where(fmt.Sprintf("%s = ?", param), c.Param(param))
 
+	for _, v := range preload {
+		tx = tx.Preload(v)
+	}
+
+	r := reflect.New(reflect.TypeOf(ctl.ResourceModel())).Interface()
+
+	logrus.WithFields(logrus.Fields{
+		"resource_method": "fetch",
+		"controller": reflect.TypeOf(ctl).String(),
+		"resource_type": reflect.TypeOf(r).String(),
+		"lookup_param": param,
+		"lookup_value": c.Param(param),
+	}).Debug("Fetching resource from database")
+
+	tx.First(r)
+
+	c.JSON(http.StatusOK, r)
 }
 
 func UpdateRecord(c *gin.Context) {

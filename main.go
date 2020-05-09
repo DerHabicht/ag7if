@@ -5,7 +5,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	_ "github.com/weblair/ag7if/config"
-	_ "github.com/weblair/ag7if/db"
+	_ "github.com/weblair/ag7if/database"
 	_ "github.com/weblair/ag7if/docs"
 )
 

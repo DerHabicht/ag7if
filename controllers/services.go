@@ -2,11 +2,7 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/sirupsen/logrus"
-	"github.com/weblair/ag7if/db"
 	"github.com/weblair/ag7if/models"
-	"net/http"
-	"strconv"
 )
 
 type ServicesController struct{
@@ -17,7 +13,7 @@ func NewServicesController() ServicesController {
 	return ServicesController{}
 }
 
-func (s ServicesController) ResourceModel() interface{} {
+func (s ServicesController) ResourceModel() models.Model {
 	return s.resourceModel
 }
 
@@ -30,18 +26,7 @@ func (s ServicesController) List(c *gin.Context) {
 }
 
 func (s ServicesController) Fetch(c *gin.Context) {
-	id, err := strconv.Atoi(c.Param("id"))
-	if err != nil {
-		logrus.WithFields(logrus.Fields{
-			"error": err,
-			"id":    c.Param("id"),
-		}).Fatal("Invalid ID passed for lookup.")
-	}
-
-	var svc models.Service
-	db.Tx.Preload("Bands").Find(&svc, id)
-
-	c.JSON(http.StatusOK, svc)
+	FetchRecord(c, s, "public_id", []string{"Bands"})
 }
 
 func (s ServicesController) Update(c *gin.Context) {

@@ -14,9 +14,9 @@ import (
 func configureResource(g *gin.RouterGroup, c controllers.Controller, r string) {
 	g.POST(fmt.Sprintf("/%s", r), c.Create)
 	g.GET(fmt.Sprintf("/%s", r), c.List)
-	g.GET(fmt.Sprintf("/%s/:id", r), c.Fetch)
-	g.PUT(fmt.Sprintf("/%s/:id", r), c.Update)
-	g.DELETE(fmt.Sprintf("/%s/:id",r), c.Delete)
+	g.GET(fmt.Sprintf("/%s/:public_id", r), c.Fetch)
+	g.PUT(fmt.Sprintf("/%s/:public_id", r), c.Update)
+	g.DELETE(fmt.Sprintf("/%s/:public_id",r), c.Delete)
 }
 
 func newRouter(version string, logger *logrus.Logger) *gin.Engine {

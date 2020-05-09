@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 
-	"github.com/weblair/ag7if/db"
+	"github.com/weblair/ag7if/database"
 )
 
 type ServiceStatus struct {
@@ -41,7 +41,7 @@ func (h HealthController) Check(c *gin.Context) {
 
 	h.Status.Services["endpoint"] = true
 
-	err := db.Tx.DB().Ping()
+	err := database.DB.DB().Ping()
 	if err == nil {
 		h.Status.Services["database"] = true
 	} else {

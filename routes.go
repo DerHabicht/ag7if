@@ -7,8 +7,8 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	ginlogrus "github.com/toorop/gin-logrus"
-	"github.com/weblair/ag7if/controllers"
-	"github.com/weblair/ag7if/middleware"
+	"github.com/weblair/maricopa/controllers"
+	"github.com/weblair/maricopa/middleware"
 )
 
 func configureResource(g *gin.RouterGroup, c controllers.Controller, r string) {

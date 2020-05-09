@@ -6,7 +6,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/spf13/viper"
 
-	_ "github.com/weblair/ag7if/config"
+	_ "github.com/weblair/maricopa/config"
 )
 
 var DB *gorm.DB = nil

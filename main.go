@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
-	_ "github.com/weblair/ag7if/config"
-	_ "github.com/weblair/ag7if/database"
-	_ "github.com/weblair/ag7if/docs"
+	_ "github.com/weblair/maricopa/config"
+	_ "github.com/weblair/maricopa/database"
+	_ "github.com/weblair/maricopa/docs"
 )
 
 // BaseVersion is the SemVer-formatted string that defines the current version of ag7if.

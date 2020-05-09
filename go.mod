@@ -1,4 +1,4 @@
-module github.com/weblair/ag7if
+module github.com/weblair/maricopa
 
 go 1.12
 

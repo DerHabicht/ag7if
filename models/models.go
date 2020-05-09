@@ -11,6 +11,7 @@ import (
 type Model interface {
 	GetID() uint
 	GetIDFieldName() string
+	GetOwnerIDFieldName() string
 }
 
 type BaseModel struct {
@@ -31,6 +32,10 @@ func (b BaseModel) GetID() uint {
 
 func (b BaseModel) GetIDFieldName() string {
 	return "ID"
+}
+
+func (b BaseModel) GetOwnerIDFieldName() string {
+	return ""
 }
 
 type ValidationErrors []string

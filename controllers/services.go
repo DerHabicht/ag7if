@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/weblair/ag7if/models"
+	"github.com/weblair/maricopa/models"
 )
 
 type ServicesController struct{
@@ -22,7 +22,7 @@ func (s ServicesController) Create(c *gin.Context) {
 }
 
 func (s ServicesController) List(c *gin.Context) {
-	ListRecords(c, s)
+	ListRecords(c, s, false)
 }
 
 func (s ServicesController) Fetch(c *gin.Context) {

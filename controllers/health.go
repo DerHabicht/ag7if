@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 
-	"github.com/weblair/ag7if/database"
+	"github.com/weblair/maricopa/database"
 )
 
 type ServiceStatus struct {

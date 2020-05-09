@@ -9,7 +9,7 @@ purposes. See deployment for notes on how to deploy the project on a live system
 
 ### Prerequisites
 
-  - Go 1.12.5 (or later)
+  - Go 1.14.2 (or later)
   - Postgres 11.4 (or later)
   - GNU Make 3.81 (or later)
   - [Swaggo CLI](https://github.com/swaggo/swag)
@@ -18,14 +18,14 @@ purposes. See deployment for notes on how to deploy the project on a live system
 
 ### Dev Setup (with Lair)
 
-  1. `git clone git@github.com:weblair/ag7if.git`
+  1. `git clone git@github.com:weblair/maricopa.git`
   2. `go mod tidy`
   3. `lair db create --seed`
   4. `make run`
 
 ### Dev Setup (without Lair)
 
-  1. `git clone git@github.com:weblair/ag7if.git`
+  1. `git clone git@github.com:weblair/maricopa.git`
   2. `psql -U postgres -c "CREATE DATABASE ag7if_development;"`
   3. `migrate -source file://db/migrations -database postgres://localhost:5432/ag7if_development?sslmode=disable up`
   4. `go mod tidy`
@@ -99,7 +99,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
   - **Robert Hawk** - *Initial work* - [DerHabicht](https://github.com/DerHabicht)
 
-See also the list of [contributors](https://github.com/weblair/ag7if/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/weblair/maricopa/contributors) who participated in this project.
 
 ## License
 

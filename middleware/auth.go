@@ -1,12 +1,13 @@
 package middleware
 
 import (
+	"net/http"
+
 	"github.com/auth0-community/go-auth0"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"gopkg.in/square/go-jose.v2"
-	"net/http"
 )
 
 func GetValidator() *auth0.JWTValidator {
@@ -21,11 +22,10 @@ func Authorize(validator *auth0.JWTValidator) gin.HandlerFunc {
 	return gin.HandlerFunc(func(c *gin.Context) {
 		tok, err := validator.ValidateRequest(c.Request)
 		if err != nil {
-			c.JSON(http.StatusUnauthorized, gin.H{"error": "invalid token"})
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "invalid token"})
 			logrus.WithFields(logrus.Fields{
 				"error": err,
 			}).Error("Invalid auth token provided to API")
-			c.Abort()
 			return
 		}
 

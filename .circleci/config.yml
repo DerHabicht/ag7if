@@ -11,18 +11,18 @@ jobs:
           command: |
             if [[ "$CIRCLE_BRANCH" == "master" ]]
             then
-              docker build -t weblair/ag7if:production -t "weblair/ag7if:${BASE_VERSION}_$CIRCLE_BUILD_NUM" .
+              docker build -t weblair/maricopa:production -t "weblair/maricopa:${BASE_VERSION}_$CIRCLE_BUILD_NUM" .
             elif [[ "$CIRCLE_BRANCH" == "develop" ]]
             then
-              docker build -t weblair/ag7if:latest -t "weblair/ag7if:${BASE_VERSION}_$CIRCLE_BUILD_NUM" .
+              docker build -t weblair/maricopa:latest -t "weblair/maricopa:${BASE_VERSION}_$CIRCLE_BUILD_NUM" .
             else
-              docker build -t weblair/ag7if:test -t "weblair/ag7if:${BASE_VERSION}_$CIRCLE_BUILD_NUM" .
+              docker build -t weblair/maricopa:test -t "weblair/maricopa:${BASE_VERSION}_$CIRCLE_BUILD_NUM" .
             fi
       - run:
           name: Push Docker image
           command: |
               echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
-              docker push weblair/ag7if
+              docker push weblair/maricopa
   stage:
     <<: *defaults
     docker:
@@ -32,7 +32,7 @@ jobs:
           name: Pull Docker image
           command: |
             ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST -C \
-            "docker stop ag7if-stage; docker rm ag7if-stage; docker pull weblair/ag7if:latest"
+            "docker stop ag7if-stage; docker rm ag7if-stage; docker pull weblair/maricopa:latest"
       - run:
           name: Restart the Docker image
           command: |
@@ -47,7 +47,7 @@ jobs:
               -e AUTH0_JWK=$AUTH0_JWK \
               --network $DB_NETWORK \
               -p 9001:8080 \
-              weblair/ag7if:latest"
+              weblair/maricopa:latest"
   deploy:
     <<: *defaults
     docker:
@@ -55,17 +55,17 @@ jobs:
     steps:
       - run:
           name: Build Docker image
-          command: docker build -t weblair/ag7if:production .
+          command: docker build -t weblair/maricopa:production .
       - run:
           name: Push Docker image
           command: |
             echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
-            docker push weblair/ag7if:production
+            docker push weblair/maricopa:production
       - run:
           name: Pull Docker image
           command: |
             ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST -C \
-            "docker stop ag7if-production; docker rm ag7if-production; docker pull weblair/ag7if:production"
+            "docker stop ag7if-production; docker rm ag7if-production; docker pull weblair/maricopa:production"
       - run:
           name: Restart the Docker image
           command: |
@@ -80,7 +80,7 @@ jobs:
               -e AUTH0_JWK=$AUTH0_JWK \
               --network $DB_NETWORK \
               -p 9000:8080 \
-              weblair/ag7if:production"
+              weblair/maricopa:production"
 workflows:
   version: 2
   build-deploy:

@@ -8,7 +8,10 @@ import (
 	"github.com/satori/go.uuid"
 )
 
-type Model interface {}
+type Model interface {
+	GetID() uint
+	GetIDFieldName() string
+}
 
 type BaseModel struct {
 	ID        uint       `json:"-" gorm:"primary_key"`
@@ -20,6 +23,14 @@ type BaseModel struct {
 type BaseModelWithUUID struct {
 	BaseModel
 	PublicID  uuid.UUID  `json:"id"`
+}
+
+func (b BaseModel) GetID() uint {
+	return b.ID
+}
+
+func (b BaseModel) GetIDFieldName() string {
+	return "ID"
 }
 
 type ValidationErrors []string

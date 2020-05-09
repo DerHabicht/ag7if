@@ -56,19 +56,45 @@ func FetchRecord(c *gin.Context, ctl Controller, param string, preload []string)
 		tx = tx.Preload(v)
 	}
 
-	r := reflect.New(reflect.TypeOf(ctl.ResourceModel())).Interface()
+	// Reflection on resource
+	rt := reflect.TypeOf(ctl.ResourceModel())
+	r := reflect.New(rt)
+
+	// Reflection on resource ID field
+	idt := reflect.TypeOf(ctl.ResourceModel().GetID())
+	idz := reflect.Zero(idt).Interface()
+	idn := ctl.ResourceModel().GetIDFieldName()
+
+	tx.First(r.Interface())
 
 	logrus.WithFields(logrus.Fields{
 		"resource_method": "fetch",
 		"controller": reflect.TypeOf(ctl).String(),
-		"resource_type": reflect.TypeOf(r).String(),
+	}).Info("Fetching resource from database")
+
+	logrus.WithFields(logrus.Fields{
+		"resource_type": rt.String(),
 		"lookup_param": param,
 		"lookup_value": c.Param(param),
-	}).Debug("Fetching resource from database")
+		"is_valid": r.IsValid(),
+	}).Debug("Resource reflection info")
 
-	tx.First(r)
+	logrus.WithFields(logrus.Fields{
+		"resource_id_value": r.Elem().FieldByName(idn).Interface(),
+		"resource_id_type": idt.String(),
+		"resource_id_name": idn,
+		"resource_id_zero_value": idz,
+	}).Debug("Resource ID field reflection info")
 
-	c.JSON(http.StatusOK, r)
+	if r.Elem().FieldByName(idn).Interface() == idz {
+		c.JSON(http.StatusNotFound, gin.H{
+			"error": "resource not found",
+			"id": c.Param(param),
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, r.Interface())
 }
 
 func UpdateRecord(c *gin.Context) {
